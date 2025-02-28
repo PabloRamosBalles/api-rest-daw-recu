@@ -6,8 +6,8 @@ from os import getenv
 
 load_dotenv()
 app = Flask(__name__)
-mysql = MySQL(app)
-#mongo = PyMongo(app)
+# mysql = MySQL(app)
+mongo = PyMongo(app)
 
 app.config['MYSQL_DB'] = getenv('MYSQL_DB')
 app.config['MYSQL_HOST'] = getenv('MYSQL_HOST')
@@ -61,28 +61,28 @@ def deleteUser(id):
 
 #MONGO
 
-@app.route('/mongo/users')
-def mongoGetUsers():
-    data = mongo.examen.find()
-    return {"personas": data}
+# @app.route('/mongo/users')
+# def mongoGetUsers():
+#     data = mongo.examen.find()
+#     return {"personas": data}
 
-@app.route('mongo/user/<string:_id>')
-def mongoGetUsers(_id):
-    data = mongo.examen.findOne({"_id":_id})
-    return {"persona": data}
+# @app.route('/mongo/user/<string:_id>')
+# def mongoGetUsers(_id):
+#     data = mongo.examen.findOne({"_id":_id})
+#     return {"persona": data}
 
-@app.route('mongo/add_user')
-def mongoAddUsers():
-    nombre = request.get_json('nombre')
-    apellido = request.get_json('apellido')
-    edad = request.get_json('edad')
-    data = mongo.examen.createOne({"nombre": nombre, "apellido": apellido, "edad":edad})
-    return {"persona añadida": data}
+# @app.route('/mongo/add_user')
+# def mongoAddUsers():
+#     nombre = request.get_json('nombre')
+#     apellido = request.get_json('apellido')
+#     edad = request.get_json('edad')
+#     data = mongo.examen.createOne({"nombre": nombre, "apellido": apellido, "edad":edad})
+#     return {"persona añadida": data}
 
-@app.route('mongo/delete_user/<string:_id>')
-def mongoDeleteUsers(_id):
-    data = mongo.examen.DeleteOne({"_id":_id})
-    return {"persona borrada": data}
+# @app.route('/mongo/delete_user/<string:_id>')
+# def mongoDeleteUsers(_id):
+#     data = mongo.examen.DeleteOne({"_id":_id})
+#     return {"persona borrada": data}
 
 
 if __name__ == '__main__':
