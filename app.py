@@ -6,8 +6,8 @@ from os import getenv
 
 load_dotenv()
 app = Flask(__name__)
-# mysql = MySQL(app)
-mongo = PyMongo(app)
+mysql = MySQL(app)
+# mongo = PyMongo(app)
 
 app.config['MYSQL_DB'] = getenv('MYSQL_DB')
 app.config['MYSQL_HOST'] = getenv('MYSQL_HOST')
