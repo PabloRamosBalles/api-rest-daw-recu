@@ -7,7 +7,7 @@ from os import getenv
 load_dotenv()
 app = Flask(__name__)
 mysql = MySQL(app)
-mongo = PyMongo(app)
+#mongo = PyMongo(app)
 
 app.config['MYSQL_DB'] = getenv('MYSQL_DB')
 app.config['MYSQL_HOST'] = getenv('MYSQL_HOST')
@@ -15,7 +15,7 @@ app.config['MYSQL_USER'] = getenv('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = getenv('MYSQL_PASSWORD')
 #app.secret_key['SECRET_KEY'] = '1234'
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017'
+#app.config['MONGO_URI'] = 'mongodb://localhost:27017'
 
 @app.route('/users')
 def getUsers():
